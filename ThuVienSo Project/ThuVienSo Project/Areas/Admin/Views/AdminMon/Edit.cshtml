@@ -1,0 +1,54 @@
+﻿@model ThuVienSo_Project.Models.Monhoc
+
+@{
+    ViewData["Title"] = "Chỉnh sửa Môn học";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<form asp-controller="AdminMon" asp-action="Edit" asp-route-id="@Model.Idmon" method="post">
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+    <input type="hidden" asp-for="Idmon" />
+    <div class="page-header">
+        <div class="header-sub-title">
+            <nav class="breadcrumb breadcrumb-dash">
+                <a asp-area="Home" asp-controller="Admin" asp-action="Index" class="breadcrumb-item"><i class="anticon anticon-home m-r-5"></i>Home</a>
+                <a class="breadcrumb-item" asp-area="Home" asp-controller="Admin" asp-action="AdminMon">Danh sách Môn học</a>
+                <span class="breadcrumb-item active">Chỉnh sửa Môn học</span>
+            </nav>
+        </div>
+    </div>
+    <div class="page-header no-gutters has-tab">
+        <div class="d-md-flex m-b-15 align-items-center justify-content-between">
+            <div class="media align-items-center m-b-15">
+            </div>
+            <div class="m-b-15">
+                <button class="btn btn-primary">
+                    <i class="anticon anticon-save"></i>
+                    <span>Lưu</span>
+                </button>
+            </div>
+        </div>
+        <ul class="nav nav-tabs">
+            <li class="nav-item">
+                <a class="nav-link active" data-toggle="tab" href="#product-edit-basic">THÔNG TIN MÔN HỌC</a>
+            </li>
+            <li class="nav-item">
+        </ul>
+    </div>
+    <div class="tab-content m-t-15">
+        <div class="tab-pane fade show active" id="product-edit-basic">
+            <div class="card">
+                <div class="card-body">
+                    <div class="form-group">
+                        <label class="font-weight-semibold" for="productName">Tên Môn học</label>
+                        <input type="text" class="form-control" asp-for="Tenmon">
+                        <label class="font-weight-semibold" for="productName">Ngành</label>
+                        <select class="custom-select" asp-for="Manganh" style="min-width: 200px;" asp-items="ViewBag.Manganh">
+                            <option value="" disabled selected>Chọn Ngành</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>

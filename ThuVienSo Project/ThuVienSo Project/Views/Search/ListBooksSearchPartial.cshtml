@@ -1,0 +1,23 @@
+﻿@model List<Sach>
+@if (Model != null)
+                    {
+                        foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>@item.Masach</td>
+                                <td>
+                                    <div class="d-flex align-items-center">
+                                        <img class="img-fluid rounded" src="assets/images/others/thumb-9.jpg" style="max-width: 60px" alt="">
+                                        <h6 class="m-b-0 m-l-10">@item.Tensach</h6>
+                                    </div>
+                                </td>
+                                <td>@item.MadanhmucNavigation.Tendanhmuc</td>
+                                
+                                <td class="text-right">
+                                    <a class="btn btn-primary btn-tone m-r-5" asp-area="Admin" asp-controller="AdminBooks" asp-action="Details" asp-route-id="@item.Masach">View</a>
+                                    <a class="btn btn-secondary btn-tone m-r-5" asp-area="Admin" asp-controller="AdminBooks" asp-action="Edit" asp-route-id="@item.Masach">Edit</a>
+                                    <a class="btn btn-success btn-tone m-r-5" asp-area="Admin" asp-controller="AdminBooks" asp-action="Delete" asp-route-id="@item.Masach">Delete</a>
+                                </td>
+                            </tr>
+                        }
+                    }

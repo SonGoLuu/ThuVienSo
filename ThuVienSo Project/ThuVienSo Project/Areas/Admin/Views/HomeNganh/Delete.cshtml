@@ -1,0 +1,43 @@
+﻿@model ThuVienSo_Project.Models.Nganhhoc
+
+@{
+    ViewData["Title"] = "Xóa Ngành " + Model.Tennganh;
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+<div class="page-header">
+    <div class="header-sub-title">
+        <nav class="breadcrumb breadcrumb-dash">
+            <a asp-area="Home" asp-controller="Admin" asp-action="Index" class="breadcrumb-item"><i class="anticon anticon-home m-r-5"></i>Home</a>
+            <a class="breadcrumb-item" asp-area="Home" asp-controller="Admin" asp-action="HomeNganh">Danh sách Ngành</a>
+            <span class="breadcrumb-item active">Xóa Ngành</span>
+        </nav>
+    </div>
+</div>
+<div class="card">
+    <div class="card-body">
+        <h4 class="card-title">Thông tin Ngành: @Model.Tennganh</h4>
+        <div class="table-responsive">
+            <table class="product-info-table m-t-20">
+                <tbody>
+                    <tr>
+                        <td>Mã Ngành:</td>
+                        <td class="text-dark font-weight-semibold">@Model.Manganh</td>
+                    </tr>
+                    <tr>
+                        <td>Tên Ngành:</td>
+                        <td>@Model.Tennganh</td>
+                    </tr>
+                    <tr>
+                        <td>Xác nhận xóa:</td>
+                        <td>
+                             <form asp-controller="HomeNganh" asp-action="Delete" asp-route-id="@Model.Manganh">
+                                <input type="hidden" asp-for="Manganh"/>
+                                <input type="submit" value="Xác nhận xóa" class="btn btn-danger" />
+                            </form>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,60 @@
+﻿@model ThuVienSo_Project.Models.Taikhoan
+
+@{
+    ViewData["Title"] = "Chỉnh sửa tài khoản";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<form asp-controller="AdminTaikhoan" asp-action="Edit" asp-route-id="@Model.Username" method="post">
+    <input type="hidden" asp-for="Username" />
+    <input type="hidden" asp-for="Masinhvien" />
+    <input type="hidden" asp-for="Magv" />
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+    <div class="page-header">
+        <div class="header-sub-title">
+            <nav class="breadcrumb breadcrumb-dash">
+                <a asp-area="Home" asp-controller="Admin" asp-action="Index" class="breadcrumb-item"><i class="anticon anticon-home m-r-5"></i>Home</a>
+                <a class="breadcrumb-item" asp-area="Home" asp-controller="Admin" asp-action="AdminTaikhoan">Danh sách tài khoản</a>
+                <span class="breadcrumb-item active">Tạo mới tài khoản</span>
+            </nav>
+        </div>
+    </div>
+    <div class="page-header no-gutters has-tab">
+        <div class="d-md-flex m-b-15 align-items-center justify-content-between">
+            <div class="media align-items-center m-b-15">
+            </div>
+            <div class="m-b-15">
+                <button class="btn btn-primary">
+                    <i class="anticon anticon-save"></i>
+                    <span>Lưu</span>
+                </button>
+            </div>
+        </div>
+        <ul class="nav nav-tabs">
+            <li class="nav-item">
+                <a class="nav-link active" data-toggle="tab" href="#product-edit-basic">THÔNG TIN TÀI KHOẢN</a>
+            </li>
+            <li class="nav-item">
+        </ul>
+    </div>
+    <div class="tab-content m-t-15">
+        <div class="tab-pane fade show active" id="product-edit-basic">
+            <div class="card">
+                <div class="card-body">
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="form-group col-4">
+                                <label class="font-weight-semibold" for="productName">Password</label>
+                                <input type="text" class="form-control" asp-for="Passwords">
+                            </div>
+                             <div class="form-group col-4">
+                                <label class="font-weight-semibold" for="productName">Loại tài khoản</label>
+                                <input type="text" class="form-control" asp-for="Loaiaccount">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>

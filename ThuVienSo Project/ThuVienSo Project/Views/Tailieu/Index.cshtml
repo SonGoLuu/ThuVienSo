@@ -1,0 +1,404 @@
+﻿@using PagedList.Core.Mvc
+@using ThuVienSo_Project.Helpper
+@model PagedList.Core.IPagedList<ThuVienSo_Project.Models.Sach>
+
+@{
+    int CurrentPage = ViewBag.CurrentPage;
+    ViewData["Title"] = "Danh sách tài liệu - page: " + CurrentPage;
+    int a = ViewBag.idlayout;
+    if(a==1) Layout = "~/Views/Shared/_Layout.cshtml";
+    else if(a==2) Layout = "~/Views/Shared/_Layout2.cshtml";
+}
+
+<main class="main-content">
+    <div class="shop-area section-space-y-axis-100">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3 order-lg-1 order-2 pt-10 pt-lg-0">
+                    <div class="sidebar-area">
+                        <div class="widgets-searchbox mb-9">
+                            <form id="widgets-searchbox" action="">
+                                <input class="input-field" id="keyword" name="keyword" type="text" placeholder="Search">
+                                <button class="widgets-searchbox-btn" type="submit">
+                                    <i class="pe-7s-search"></i>
+                                </button>
+                            </form>
+                        </div>
+                        <div class="widgets-area mb-9">
+                            <h2 class="widgets-title mb-5">Danh mục</h2>
+                            <div class="widgets-item">
+                                <ul class="widgets-category">
+                                    <li>
+                                        <a asp-action="Index" asp-route-Madanhmuc="1" asp-route-idlayout=@a>
+                                            Tài liệu học tập
+
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a asp-action="Index" asp-route-Madanhmuc="2" asp-route-idlayout=@a>
+                                            Slide bài giảng
+
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a asp-action="Index" asp-route-Madanhmuc="3" asp-route-idlayout=@a>
+                                            Lưu hành nội bộ
+
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a asp-action="Index" asp-route-Madanhmuc="4" asp-route-idlayout=@a>
+                                            Luận án
+
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a asp-action="Index" asp-route-Madanhmuc="7" asp-route-idlayout=@a>
+                                            Đề cương
+
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="header-search-area d-none d-lg-block">
+                            <select class="" id="txtCatID" name="txtCatID" style="min-width: 200px;" asp-items="ViewBag.Idmon">
+                                <option selected>Theo Môn học</option>
+                                <option value="all">Chọn tất cả</option>
+                            </select>
+                        </div>
+                        <br />
+                        <br />
+                        <div class="widgets-area mb-9">
+                            <h2 class="widgets-title mb-5">Top Rated Books</h2>
+                            <div class="widgets-item">
+                                <div class="swiper-container widgets-list-slider">
+                                    <div class="swiper-wrapper" id="topRateDocList">
+                                        
+                                        @*<div class="swiper-slide">
+                                            <div class="product-list-item">
+                                                <div class="product-img img-zoom-effect">
+                                                    <a href="single-product.html">
+                                                        <img class="img-full" src="~/assets1/images/product/small-size/1-2-112x124.jpg" alt="Product Images">
+                                                    </a>
+                                                </div>
+                                                <div class="product-content">
+                                                    <a class="product-name" href="single-product.html">Natural Coconut</a>
+                                                    <div class="price-box pb-1">
+                                                        <span class="new-price">$80.00</span>
+                                                    </div>
+                                                    <div class="rating-box-wrap">
+                                                        <div class="rating-box">
+                                                            <ul>
+                                                                <li><i class="pe-7s-star"></i></li>
+                                                                <li><i class="pe-7s-star"></i></li>
+                                                                <li><i class="pe-7s-star"></i></li>
+                                                                <li><i class="pe-7s-star"></i></li>
+                                                                <li><i class="pe-7s-star"></i></li>
+                                                            </ul>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="swiper-slide">
+                                            <div class="product-list-item">
+                                                <div class="product-img img-zoom-effect">
+                                                    <a href="single-product.html">
+                                                        <img class="img-full" src="~/assets1/images/product/small-size/1-3-112x124.jpg" alt="Product Images">
+                                                    </a>
+                                                </div>
+                                                <div class="product-content">
+                                                    <a class="product-name" href="single-product.html">Black Peppepr Read</a>
+                                                    <div class="price-box pb-1">
+                                                        <span class="new-price">$80.00</span>
+                                                    </div>
+                                                    <div class="rating-box-wrap">
+                                                        <div class="rating-box">
+                                                            <ul>
+                                                                <li><i class="pe-7s-star"></i></li>
+                                                                <li><i class="pe-7s-star"></i></li>
+                                                                <li><i class="pe-7s-star"></i></li>
+                                                                <li><i class="pe-7s-star"></i></li>
+                                                                <li><i class="pe-7s-star"></i></li>
+                                                            </ul>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>*@
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="widgets-area">
+                            <h2 class="widgets-title mb-5">Keyword</h2>
+                            <div class="widgets-item">
+                                <ul class="widgets-tags">
+                                    <li>
+                                        <a asp-route-Keyword="lập trình" asp-route-idlayout=@a>lập trình</a>
+                                    </li>
+                                    <li>
+                                        <a asp-route-Keyword="IT" asp-route-idlayout=@a>IT</a>
+                                    </li>
+                                    <li>
+                                        <a asp-route-Keyword="xstk" asp-route-idlayout=@a>xstk</a>
+                                    </li>
+                                    <li>
+                                        <a asp-route-Keyword="toán học" asp-route-idlayout=@a>toán học</a>
+                                    </li>
+                                    <li>
+                                        <a asp-route-Keyword="dct" asp-route-idlayout=@a>dct</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-9 order-lg-2 order-1">
+                    <div class="product-topbar">
+                        <ul>
+                            <li class="page-count">
+                                <span>@Model.TotalItemCount</span> tài liệu được tìm thấy
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="tab-content text-charcoal pt-8">
+
+                        <div class="tab-pane fade show active" id="list-view" role="tabpanel" aria-labelledby="list-view-tab">
+                            <div class="product-list-view with-sidebar row">
+
+                                @if (Model != null)
+                                {
+                                    int i = 0;
+                                    foreach (var item in Model)
+                                    {
+                                        if (i == 0)
+                                        {
+                                            <div class="col-12">
+                                                <div class="product-item">
+                                                    <div class="product-img img-zoom-effect">
+                                                        <a asp-controller="Tailieu" asp-action="Details" asp-route-id="@item.Masach" asp-route-idlayout=@a>
+                                                            <img class="img-full" src="~/images/products/@item.Anh" alt="Product Images">
+                                                        </a>
+                                                        <div class="product-add-action">
+                                                            <ul>
+                                                                <li>
+                                                                    <a asp-controller="Tailieu" asp-action="Details" asp-route-id="@item.Masach" asp-route-idlayout=@a>
+                                                                        <i class="pe-7s-look"></i>
+                                                                    </a>
+                                                                </li>
+                                                                <li>
+                                                                    <a asp-controller="Tailieu" asp-action="Read" asp-route-id=@item.Masach asp-route-idlayout=@a>
+                                                                        <i class="pe-7s-cloud-download"></i>
+                                                                    </a>
+                                                                </li>
+                                                            </ul>
+                                                        </div>
+                                                    </div>
+                                                    <div class="product-content align-self-center">
+                                                        <a class="product-name pb-2" asp-controller="Tailieu" asp-action="Details" asp-route-id="@item.Masach" style="color:#FD922E; font-weight: bold; margin-bottom:0px" asp-route-idlayout=@a>@item.Tensach</a>
+                                                        <div class="price-box pb-1">
+                                                            <span class="new-price">Tác giả: @item.Tacgia</span>
+                                                        </div>
+                                                        <div class="rating-box pb-2">
+                                                            <ul>
+                                                                <li><i class="pe-7s-star"></i></li>
+                                                                <li><i class="pe-7s-star"></i></li>
+                                                                <li><i class="pe-7s-star"></i></li>
+                                                                <li><i class="pe-7s-star"></i></li>
+                                                                <li><i class="pe-7s-star"></i></li>
+                                                                <li> </li>
+                                                                <li>@item.Diemdanhgia</li>
+                                                                <li> </li>
+                                                                <li><i class="pe-7s-look"></i></li>
+                                                                <li> </li>
+                                                                <li>@item.Luotxem</li>
+                                                                <li> </li>
+                                                                <li><i class="pe-7s-cloud-download"></i></li>
+                                                                <li> </li>
+                                                                <li>@item.Luottai</li>
+                                                            </ul>
+                                                        </div>
+                                                        <p class="short-desc mb-0">@Utilities.HTMLToText(@item.Gioithieu)</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        }
+                                        else
+                                        {
+                                            <div class="col-12 pt-6">
+                                                <div class="product-item">
+                                                    <div class="product-img img-zoom-effect">
+                                                        <a asp-controller="Tailieu" asp-action="Details" asp-route-id="@item.Masach" asp-route-idlayout=@a>
+                                                            <img class="img-full" src="~/images/products/@item.Anh" alt="Product Images">
+                                                        </a>
+                                                        <div class="product-add-action">
+                                                            <ul>
+                                                                <li>
+                                                                    <a asp-controller="Tailieu" asp-action="Details" asp-route-id="@item.Masach" asp-route-idlayout=@a>
+                                                                        <i class="pe-7s-look"></i>
+                                                                    </a>
+                                                                </li>
+                                                                <li>
+                                                                    <a asp-controller="Tailieu" asp-action="Read" asp-route-id=@item.Masach asp-route-idlayout=@a>
+                                                                        <i class="pe-7s-cloud-download"></i>
+                                                                    </a>
+                                                                </li>
+                                                            </ul>
+                                                        </div>
+                                                    </div>
+                                                    <div class="product-content align-self-center">
+                                                        <a class="product-name pb-2" asp-controller="Tailieu" asp-action="Details" asp-route-id="@item.Masach" style="color:#FD922E; font-weight: bold; margin-bottom:0px" asp-route-idlayout=@a>@item.Tensach</a>
+                                                        <div class="price-box pb-1">
+                                                            <span class="new-price">Tác giả: @item.Tacgia</span>
+                                                        </div>
+                                                        <div class="rating-box pb-2">
+                                                            <ul>
+                                                                <li><i class="pe-7s-star"></i></li>
+                                                                <li><i class="pe-7s-star"></i></li>
+                                                                <li><i class="pe-7s-star"></i></li>
+                                                                <li><i class="pe-7s-star"></i></li>
+                                                                <li><i class="pe-7s-star"></i></li>
+                                                                <li> </li>
+                                                                <li>@item.Diemdanhgia</li>
+                                                                <li> </li>
+                                                                <li><i class="pe-7s-look"></i></li>
+                                                                <li> </li>
+                                                                <li>@item.Luotxem</li>
+                                                                <li> </li>
+                                                                <li><i class="pe-7s-cloud-download"></i></li>
+                                                                <li> </li>
+                                                                <li>@item.Luottai</li>
+                                                            </ul>
+                                                        </div>
+                                                        <p class="short-desc mb-0">@Utilities.HTMLToText(@item.Gioithieu)</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        }
+                                        i++;
+                                    }
+                                }
+                            </div>
+                        </div>
+                    </div>
+
+                    <!--Phân trangggg-->
+                    <div class="pagination-area pt-10">
+                        <nav aria-label="Page navigation example">
+                            <div aria-label="Page navigation example">
+                                <ul class="pagination justify-content-center">
+                                    @{
+                                        string url = @Context.Request.QueryString.ToString();
+                                        if (url.Contains("Manganh"))
+                                        {
+                                            <pager class="pager-container" list="@Model" asp-controller="Tailieu" asp-action="Index" asp-route-Manganh="@ViewBag.CurrentCateID" asp-route-idlayout=@a/>
+                                        }
+                                        else if (url.Contains("Madanhmuc"))
+                                        {
+                                            <pager class="pager-container" list="@Model" asp-controller="Tailieu" asp-action="Index" asp-route-Madanhmuc="@ViewBag.CurrentCateID" asp-route-idlayout=@a/>
+                                        }
+                                        else if (url.Contains("Keyword"))
+                                        {
+                                            <pager class="pager-container" list="@Model" asp-controller="Tailieu" asp-action="Index" asp-route-Keyword="@ViewBag.CurrentCateID" asp-route-idlayout=@a/>
+                                        }
+                                        else
+                                        {
+                                            <pager class="pager-container" list="@Model" asp-controller="Tailieu" asp-action="Index" asp-route-Idmon="@ViewBag.CurrentCateID" asp-route-idlayout=@a/>
+                                        }
+                                    }
+                                </ul>
+                            </div>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</main>
+@section Scripts {
+<script>
+    $(document).ready(function ()
+    {
+        LoadTopRateDoc();
+        jQuery("#txtCatID").change(function ()
+        {
+            var idmon = jQuery(this).children(":selected").attr("value");
+            idmon = parseFloat(idmon);
+            $('#txtCatID option')
+            .removeAttr('selected');
+            $("#txtCatID > [value=" + idmon + "]").attr("selected", "true");
+
+            $.ajax(
+                {
+                url: '/Tailieu/Filtter',
+                dataType: "json",
+                type: "GET",
+                data: {
+                    Idmon : idmon, idlayout: @a
+                },
+                async: true,
+                success: function(results)
+                {
+                    if(results.status == "success")
+                    {
+                        window.location.href = results.redirectUrl;
+                    }
+                },
+                error: function(xhr) {
+                    alert('eror');
+                }
+            });
+        });
+    });
+
+    function LoadTopRateDoc(){
+        $.ajax({
+            url: '/Tailieu/LoadTopRateDoc',
+            method: 'get',
+            success: function(result){
+                if(result.status == "ok"){
+                    var str = '';
+                    $.each(result.sachs, function(index, value){
+                        str += '<div class="swiper-slide" style="padding-top: 20px">';
+                        str += '<div class="product-list-item">';
+                        str += '<div class="product-img img-zoom-effect">';
+                        str += '<a href="/Tailieu/Details/'+ value.masach +'?idlayout=' + @a + '">';
+                        str += '<img class="img-full" src="/images/products/'+ value.anh +'" alt="Product Images" width="100px" height="100px">';
+                        str += '</a>';
+                        str += '</div>';
+                        str += '<div class="product-content">';
+                        str += '<a class="product-name" href="/Tailieu/Details/' + value.masach + '?idlayout=' + @a + '"style="color:#FD922E; font-size:13px; font-weight: bold">'+ value.tensach +'</a>';
+                        str += '<div class="price-box pb-1">';
+                        str += '<span class="new-price" style="font-size:12px">Tác giả: '+ value.tacgia +'</span>';
+                        str += '</div>';
+                        str += '<div class="rating-box-wrap">';
+                        str += '<div class="rating-box">';
+                        str += '<ul>';
+                        str += '<li><i class="pe-7s-star"></i></li>';
+                        str += '<li><i class="pe-7s-star"></i></li>';
+                        str += '<li><i class="pe-7s-star"></i></li>';
+                        str += '<li><i class="pe-7s-star"></i></li>';
+                        str += '<li><i class="pe-7s-star"></i></li>';
+                        str += '<li></li>';
+                        str += '<span class="new-price" style="font-size:13px; padding-top: 3.5px">'+ value.diemdanhgia +'</span>';
+                        str += '</ul>';
+                        str += '</div>';
+                        str += '</div>';
+                        str += '</div>';
+                        str += '</div>';
+                        str += '</div>';
+                    });
+
+                    $('#topRateDocList').html(str);
+                }
+            },
+            error: function(err){
+                console.log(err);
+            }
+        });
+    }
+</script>
+}

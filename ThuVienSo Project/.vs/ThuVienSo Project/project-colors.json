@@ -1,0 +1,16 @@
+{
+  "Version": 1,
+  "ProjectMap": {
+    "f42a36e2-c1a5-4d65-8ddd-59f97f8ca980": {
+      "ProjectGuid": "f42a36e2-c1a5-4d65-8ddd-59f97f8ca980",
+      "DisplayName": "ThuVienSo Project",
+      "ColorIndex": 0
+    },
+    "a2fe74e1-b743-11d0-ae1a-00a0c90fffc3": {
+      "ProjectGuid": "a2fe74e1-b743-11d0-ae1a-00a0c90fffc3",
+      "DisplayName": "Miscellaneous Files",
+      "ColorIndex": -1
+    }
+  },
+  "NextColorIndex": 1
+}

@@ -1,0 +1,101 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+    <!-- Basic -->
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <!-- Mobile Metas -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <!-- Site Metas -->
+    <link rel="icon" href="~/assets/images/favicon.png" type="image/gif" />
+    <meta name="keywords" content="" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+
+    <title>THƯ VIỆN SỐ</title>
+
+    <!-- bootstrap core css -->
+    <link rel="stylesheet" type="text/css" href="~/assets/css/bootstrap.css" />
+    <!-- font awesome style -->
+    <link href="~/assets/css/font-awesome.min.css" rel="stylesheet" />
+
+    <!-- Custom styles for this template -->
+    <link rel="stylesheet" href="~/assets1/css/style.css">
+    <link href="~/assets/css/style.css" rel="stylesheet" />
+    <!-- responsive style -->
+    <link href="~/assets/css/responsive.css" rel="stylesheet" />
+
+    <!-- CSS
+    ============================================ -->
+
+    <!-- Vendor CSS (Contain Bootstrap, Icon Fonts) -->
+    <link rel="stylesheet" href="~/assets1/css/vendor/font-awesome.min.css" />
+    <link rel="stylesheet" href="~/assets1/css/vendor/Pe-icon-7-stroke.css" />
+
+    <!-- Plugin CSS (Global Plugins Files) -->
+    <link rel="stylesheet" href="~/assets1/css/plugins/animate.min.css">
+    <link rel="stylesheet" href="~/assets1/css/plugins/jquery-ui.min.css">
+    <link rel="stylesheet" href="~/assets1/css/plugins/swiper-bundle.min.css">
+    <link rel="stylesheet" href="~/assets1/css/plugins/nice-select.css">
+    <link rel="stylesheet" href="~/assets1/css/plugins/magnific-popup.min.css" />
+    @await RenderSectionAsync("Styles", required:false)
+
+    <!--jquery-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+</head>
+
+<body>
+    <div class="hero_area">
+        
+        <!-- header section strats -->
+        @await Html.PartialAsync("_HeaderPartialView.cshtml")
+    <!-- end header section -->
+    <!--begin main-->
+
+    @RenderBody()
+
+    <!--end main-->
+
+    <!--Begin Footer-->
+
+    @await Html.PartialAsync("_FooterPartialView.cshtml")
+    </div>
+    <!--end Footer-->
+
+    <!-- Syncfusion ASP.NET Core controls scripts -->
+    <script src="https://cdn.syncfusion.com/ej2/20.1.55/dist/ej2.min.js"></script>
+
+
+    <!-- Vendor JS -->
+    <script src="~/assets1/js/vendor/bootstrap.bundle.min.js"></script>
+    <script src="~/assets1/js/vendor/jquery-3.5.1.min.js"></script>
+    <script src="~/assets1/js/vendor/jquery-migrate-3.3.0.min.js"></script>
+    <script src="~/assets1/js/vendor/modernizr-3.11.2.min.js"></script>
+    <script src="~/assets1/js/vendor/jquery.waypoints.js"></script>
+
+    <!--Plugins JS-->
+    <script src="~/assets1/js/plugins/wow.min.js"></script>
+    <script src="~/assets1/js/plugins/jquery-ui.min.js"></script>
+    <script src="~/assets1/js/plugins/swiper-bundle.min.js"></script>
+    <script src="~/assets1/js/plugins/jquery.nice-select.js"></script>
+    <script src="~/assets1/js/plugins/parallax.min.js"></script>
+    <script src="~/assets1/js/plugins/jquery.magnific-popup.min.js"></script>
+
+    <!--Main JS (Common Activation Codes)-->
+    <script src="~/assets1/js/main.js"></script>
+
+
+    <!-- jQery -->
+    <script src="~/assets/js/jquery-3.4.1.min.js"></script>
+    <!-- bootstrap js -->
+    <script src="~/assets/js/bootstrap.js"></script>
+    <!-- custom js -->
+    <script src="~/assets/js/custom.js"></script>
+    <!-- Google Map -->
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCh39n5U-4IoWpsVGUHWdqB6puEkhRLdmI&callback=myMap"></script>
+    <!-- End Google Map -->
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+
+</html>

@@ -1,0 +1,155 @@
+﻿@model ThuVienSo_Project.Models.Sach
+@section Styles{
+<link href="~/Adminassets/summernote/summernote-bs4.css" rel="stylesheet" />
+<link href="~/Adminassets/summernote/summernote.css" rel="stylesheet" />
+}
+@{
+    ViewData["Title"] = "Xóa tài liệu";
+    Layout = "~/Areas/GiangVien/Shared/_GiangVienLayout.cshtml";
+}
+
+<form asp-action="Delete">
+    <div class="page-header no-gutters has-tab">
+        <nav class="breadcrumb breadcrumb-dash">
+                <a asp-area="Home" asp-controller="GiangVien" asp-action="Index" class="breadcrumb-item"><i class="anticon anticon-home m-r-5"></i>Home</a>
+                <a class="breadcrumb-item" asp-area="Home" asp-controller="GiangVien" asp-action="UploadTaiLieu">Danh sách tài liệu</a>
+                <span class="breadcrumb-item active">Xóa tài liệu</span>
+            </nav>
+            <br />
+            <br />
+        <div class="d-md-flex m-b-15 align-items-center justify-content-between">
+            <div class="media align-items-center m-b-15">
+                <div class="avatar avatar-image rounded" style="height: 70px; width: 70px">
+                    <img src="~/images/products/@Model.Anh" alt="">
+                </div>
+                <div class="m-l-15">
+                    <h4 class="m-b-0">@Model.Tensach</h4>
+                    <p class="text-muted m-b-0">@Model.Tacgia</p>
+                </div>
+            </div>
+            <div class="m-b-15">
+                <input type="hidden" asp-for="Masach" />
+                <input type="submit" value="Delete" class="btn btn-danger" />
+            </div>
+        </div>
+        <ul class="nav nav-tabs">
+            <li class="nav-item">
+                <a class="nav-link active" data-toggle="tab" href="#product-edit-basic">Thông tin tài liệu</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" data-toggle="tab" href="#product-edit-option">Thông tin khác</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" data-toggle="tab" href="#product-edit-description">Tập tin</a>
+            </li>
+        </ul>
+    </div>
+    <div class="tab-content m-t-15">
+        <div class="tab-pane fade show active" id="product-edit-basic">
+            <div class="card">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="form-group col-6">
+                            <label class="font-weight-semibold" for="productName">Tên tài liệu</label>
+                            <input type="text" class="form-control" asp-for="Tensach">
+                        </div>
+                        <div class="form-group col-6">
+                            <label class="font-weight-semibold" for="productPrice">Tác giả</label>
+                            <input type="text" class="form-control" asp-for="Tacgia">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-6">
+                            <label class="font-weight-semibold" for="productCategory">Danh mục</label>
+                            <input type="text" class="form-control" asp-for="MadanhmucNavigation.Tendanhmuc">
+                        </div>
+                        <div class="form-group col-6">
+                            <label class="font-weight-semibold" for="productCategory">Môn học</label>
+                            <input type="text" class="form-control" asp-for="IdmonNavigation.Tenmon">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-6">
+                            <label class="font-weight-semibold" for="productCategory">Người đăng tải</label>
+                            <input type="text" class="form-control" asp-for="MagvNavigation.Hoten">
+                        </div>
+                        <div class="form-group col-6">
+                            <label class="font-weight-semibold" for="productCategory">Ngày đăng</label>
+                            <input type="text" class="form-control" asp-for="Ngaydang">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="tab-pane fade" id="product-edit-option">
+            <div class="card">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="form-group col-6">
+                            <label class="font-weight-semibold" for="productName">Lượt tải</label>
+                            <input type="text" class="form-control" asp-for="Luottai">
+                        </div>
+                        <div class="form-group col-6">
+                            <label class="font-weight-semibold" for="productPrice">Lượt xem</label>
+                            <input type="text" class="form-control" asp-for="Luotxem">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-6">
+                            <label class="font-weight-semibold" for="productCategory">Keyword</label>
+                            <input type="text" class="form-control" asp-for="Keyword">
+                        </div>
+                        <div class="form-group col-6">
+                            <label class="font-weight-semibold" for="productCategory">Điểm đánh giá</label>
+                            <input type="text" class="form-control" asp-for="Diemdanhgia">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-12">
+                            <label class="font-weight-semibold" for="productCategory">Giới thiệu</label>
+                            <textarea class="summernote" asp-for="Gioithieu"></textarea>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="tab-pane fade" id="product-edit-description">
+            <div class="card">
+                <div class="card-body">
+                    <div class="form-group">
+                        <label class="font-weight-semibold" for="productName">File ảnh</label>
+                        <br />
+                        <div class="avatar avatar-image rounded" style="height: 250px; width: 250px">
+                            <img src="~/images/products/@Model.Anh" alt="">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="font-weight-semibold" for="productName">File data</label>
+                        <input type="text" class="form-control" asp-for="Filedata">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+@section Scripts
+{
+<!-- page js -->
+<script src="~/Adminassets/vendors/select2/select2.min.js"></script>
+<script src="~/Adminassets/js/pages/e-commerce-product-edit.js"></script>
+<!-- Core JS -->
+<script src="https://ajax.aspnetcdn.com/ajax/jquery.validate/1.14.0/jquery.validate.min.js"></script>
+<script src="~/Adminassets/summernote/summernote-bs4.js"></script>
+<script>
+        jQuery(document).ready(function (){
+        $('.summernote').summernote({
+            fontNames: ['Arial', 'Arial Black', 'Comic Sans MS', 'Courier New'],
+            styleTags: ['p', 'h1', 'h2', 'h3', 'h4', 'h5'],
+            height: 200,                // set editor height
+            minHeight: null,            // set minimum height of editor
+            maxHeight: null,            // set maximum height of editor
+            focus: true                 // set focus to editable area after initializing summernote
+        });
+    });
+</script>
+}

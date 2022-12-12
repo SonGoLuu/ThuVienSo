@@ -1,0 +1,55 @@
+﻿@model ThuVienSo_Project.Models.Giangvien
+
+@{
+    ViewData["Title"] = "Xóa Giảng viên " + Model.Hoten;
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+<div class="page-header">
+    <div class="header-sub-title">
+        <nav class="breadcrumb breadcrumb-dash">
+            <a asp-area="Home" asp-controller="Admin" asp-action="Index" class="breadcrumb-item"><i class="anticon anticon-home m-r-5"></i>Home</a>
+            <a class="breadcrumb-item" asp-area="Home" asp-controller="Admin" asp-action="AdminGiangvien">Danh sách Giảng viên</a>
+            <span class="breadcrumb-item active">Xóa Giảng viên</span>
+        </nav>
+    </div>
+</div>
+<div class="card">
+    <div class="card-body">
+        <h4 class="card-title">Thông tin Giảng viên: @Model.Hoten</h4>
+        <div class="table-responsive">
+            <table class="product-info-table m-t-20">
+                <tbody>
+                    <tr>
+                        <td>Mã Giảng viên:</td>
+                        <td class="text-dark font-weight-semibold">@Model.Magv</td>
+                    </tr>
+                    <tr>
+                        <td>Tên Giảng viên:</td>
+                        <td>@Model.Hoten</td>
+                    </tr>
+                     <tr>
+                        <td>Khoa/Bộ môn:</td>
+                        <td>@Model.IdkhoaNavigation.Tenkhoa</td>
+                    </tr>
+                    <tr>
+                        <td>Email:</td>
+                        <td>@Model.Email</td>
+                    </tr>
+                    <tr>
+                        <td>Giới tính</td>
+                        <td>@Model.Gioitinh</td>
+                    </tr>
+                    <tr>
+                        <td>Xác nhận xóa:</td>
+                        <td>
+                             <form asp-controller="AdminGiangvien" asp-action="Delete" asp-route-id="@Model.Magv">
+                                <input type="hidden" asp-for="Magv"/>
+                                <input type="submit" value="Xác nhận xóa" class="btn btn-danger" />
+                            </form>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

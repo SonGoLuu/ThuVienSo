@@ -1,0 +1,88 @@
+﻿@using PagedList.Core.Mvc
+@model PagedList.Core.IPagedList<ThuVienSo_Project.Models.Taikhoan>
+
+@{
+    ViewData["Title"] = "Tài khoản - page: " + @ViewBag.CurrentPage;
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+<div class="page-header">
+    <div class="header-sub-title">
+        <nav class="breadcrumb breadcrumb-dash">
+            <a asp-area="Admin" asp-controller="Home" class="breadcrumb-item" asp-action="Index"><i class="anticon anticon-home m-r-5"></i>Home</a>
+            <a class="breadcrumb-item" asp-area="Admin" asp-controller="AdminTaikhoan" asp-action="Index">Danh sách Tài khoản</a>
+            <span class="breadcrumb-item active">Danh sách Tài khoản : page @ViewBag.CurrentPage</span>
+        </nav>
+    </div>
+</div>
+<div class="card">
+    <div class="card-body">
+        <div class="row m-b-30">
+            <div class="col-md-8">
+            </div>
+            <div class="col-lg-4 text-right">
+                <a class="btn btn-primary" asp-controller="AdminTaikhoan" asp-action="Create"> <i class="anticon anticon-plus-circle m-r-5"></i>  <span>Thêm mới</span> </a>
+            </div>
+        </div>
+        <div class="table-responsive">
+            <table class="table table-hover e-commerce-table">
+                <thead>
+                    <tr>
+                        <th>Username</th>
+                        <th>Password</th>
+                        <th>Loại tài khoản</th>
+                        <th>Người sở hữu</th>
+                        <th>#</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @if (Model != null)
+                    {
+                        foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>@item.Username</td>
+                                <td>@item.Passwords</td>
+
+                                @if (item.Loaiaccount == 0)
+                                {
+                                    <td>Admin</td>
+                                }
+                                else if (item.Loaiaccount == 1)
+                                {
+                                    <td>Giảng viên</td>
+                                }
+                                else if (item.Loaiaccount == 2)
+                                {
+                                    <td>Sinh viên</td>
+                                }
+
+                                @if (item.Magv == null && item.Masinhvien == null)
+                                {
+                                    <td>Admin</td>
+                                }
+                                else if (item.Magv != null)
+                                {
+                                    <td>@item.MagvNavigation.Hoten</td>
+                                }
+                                else if (item.Masinhvien != null)
+                                {
+                                    <td>@item.MasinhvienNavigation.Hoten</td>
+                                }
+                                <td>
+                                    <a class="btn btn-primary btn-tone m-r-5" asp-area="Admin" asp-controller="AdminTaikhoan" asp-action="Details" asp-route-id="@item.Username">View</a>
+                                    <a class="btn btn-secondary btn-tone m-r-5" asp-area="Admin" asp-controller="AdminTaikhoan" asp-action="Edit" asp-route-id="@item.Username">Edit</a>
+                                    <a class="btn btn-success btn-tone m-r-5" asp-area="Admin" asp-controller="AdminTaikhoan" asp-action="Delete" asp-route-id="@item.Username">Delete</a>
+                                </td>
+                            </tr>
+                        }
+                    }
+                </tbody>
+            </table>
+            <div aria-label="Page navigation example">
+                <ul class="pagination">
+                    <pager class="pager-container" list="@Model" asp-area="Admin" asp-controller="AdminTaikhoan" asp-action="Index" />
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>

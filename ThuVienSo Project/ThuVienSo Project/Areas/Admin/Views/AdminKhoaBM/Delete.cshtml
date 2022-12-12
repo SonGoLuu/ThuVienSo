@@ -1,0 +1,43 @@
+﻿@model ThuVienSo_Project.Models.KhoaBm
+
+@{
+    ViewData["Title"] = "Xóa Khoa/Bộ môn " + Model.Tenkhoa;
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+<div class="page-header">
+    <div class="header-sub-title">
+        <nav class="breadcrumb breadcrumb-dash">
+            <a asp-area="Home" asp-controller="Admin" asp-action="Index" class="breadcrumb-item"><i class="anticon anticon-home m-r-5"></i>Home</a>
+            <a class="breadcrumb-item" asp-area="Home" asp-controller="Admin" asp-action="AdminKhoaBM">Danh sách Khoa/Bộ môn</a>
+            <span class="breadcrumb-item active">Xóa Khoa/Bộ môn</span>
+        </nav>
+    </div>
+</div>
+<div class="card">
+    <div class="card-body">
+        <h4 class="card-title">Thông tin Khoa/Bộ môn: @Model.Tenkhoa</h4>
+        <div class="table-responsive">
+            <table class="product-info-table m-t-20">
+                <tbody>
+                    <tr>
+                        <td>Mã Khoa/Bộ môn:</td>
+                        <td class="text-dark font-weight-semibold">@Model.Idkhoa</td>
+                    </tr>
+                    <tr>
+                        <td>Tên Khoa/Bộ môn:</td>
+                        <td>@Model.Tenkhoa</td>
+                    </tr>
+                    <tr>
+                        <td>Xác nhận xóa:</td>
+                        <td>
+                             <form asp-controller="AdminKhoaBM" asp-action="Delete" asp-route-id="@Model.Idkhoa">
+                                <input type="hidden" asp-for="Idkhoa"/>
+                                <input type="submit" value="Xác nhận xóa" class="btn btn-danger" />
+                            </form>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

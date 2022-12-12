@@ -1,0 +1,73 @@
+﻿@model ThuVienSo_Project.Models.Taikhoan
+
+@{
+    ViewData["Title"] = "Xóa Tài khoản " + Model.Username;
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+<div class="page-header">
+    <div class="header-sub-title">
+        <nav class="breadcrumb breadcrumb-dash">
+            <a asp-area="Home" asp-controller="Admin" asp-action="Index" class="breadcrumb-item"><i class="anticon anticon-home m-r-5"></i>Home</a>
+            <a class="breadcrumb-item" asp-area="Home" asp-controller="Admin" asp-action="AdminTaikhoan">Danh sách Tài khoản</a>
+            <span class="breadcrumb-item active">Xóa Tài khoản</span>
+        </nav>
+    </div>
+</div>
+<div class="card">
+    <div class="card-body">
+        <h4 class="card-title">Thông tin Tài khoản: @Model.Username</h4>
+        <div class="table-responsive">
+            <table class="product-info-table m-t-20">
+                <tbody>
+                    <tr>
+                        <td>Username:</td>
+                        <td class="text-dark font-weight-semibold">@Model.Username</td>
+                    </tr>
+                    <tr>
+                        <td>Password:</td>
+                        <td class="text-dark font-weight-semibold">@Model.Passwords</td>
+                    </tr>
+                    <tr>
+                        <td>Loại tài khoản:</td>
+                        @if(@Model.Loaiaccount==0)
+                        {
+                            <td>Admin</td>
+                        }
+                        else if(@Model.Loaiaccount==1)
+                        {
+                            <td>Giảng viên</td>
+                        }
+                        else if(@Model.Loaiaccount==2)
+                        {
+                            <td>Sinh viên</td>
+                        }
+                    </tr>
+                    <tr>
+                        <td>Người sở hữu:</td>
+                        @if(@Model.Magv==null && @Model.Masinhvien==null)
+                        {
+                            <td>Admin</td>
+                        }
+                        else if(@Model.Magv!=null)
+                        {
+                            <td>@Model.MagvNavigation.Hoten</td>
+                        }
+                        else if(@Model.Masinhvien!=null)
+                        {
+                            <td>@Model.MasinhvienNavigation.Hoten</td>
+                        }
+                    </tr>
+                    <tr>
+                        <td>Xác nhận xóa:</td>
+                        <td>
+                            <form asp-controller="AdminTaikhoan" asp-action="Delete" asp-route-id="@Model.Username">
+                                <input type="hidden" asp-for="Username" />
+                                <input type="submit" value="Xác nhận xóa" class="btn btn-danger" />
+                            </form>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

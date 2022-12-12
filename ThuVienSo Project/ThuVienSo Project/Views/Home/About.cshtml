@@ -1,0 +1,32 @@
+﻿
+@{
+    ViewData["Title"] = "About";
+    int a = ViewBag.id;
+    if(a==1) Layout = "~/Views/Shared/_Layout.cshtml";
+    else if(a==2) Layout = "~/Views/Shared/_Layout2.cshtml";
+}
+
+<section class="about_section layout_padding">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="img-box">
+                        <img src="~/assets/images/about-img.png" alt="" />
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="detail-box">
+                        <div class="heading_container">
+                            <h2>About Our Bookstore</h2>
+                        </div>
+                        <p>
+                            At cumque tenetur iste molestiae, vel eum reiciendis assumenda! Numquam, repudiandae. Consequuntur obcaecati recusandae aliquam, amet doloribus eius dolores officiis cumque? Quibusdam praesentium pariatur sapiente mollitia, amet hic iusto voluptas! Iusto
+                            quo earum vitae excepturi, ipsam aliquid deleniti assumenda culpa deserunt.
+                        </p>
+                        <a href=""> Read More </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+

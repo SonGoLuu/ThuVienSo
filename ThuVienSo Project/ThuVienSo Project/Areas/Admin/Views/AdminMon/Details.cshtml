@@ -1,0 +1,38 @@
+﻿@model ThuVienSo_Project.Models.Monhoc
+
+@{
+    ViewData["Title"] = "Thông tin Môn học " + Model.Tenmon;
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+<div class="page-header">
+    <div class="header-sub-title">
+        <nav class="breadcrumb breadcrumb-dash">
+            <a asp-area="Home" asp-controller="Admin" asp-action="Index" class="breadcrumb-item"><i class="anticon anticon-home m-r-5"></i>Home</a>
+            <a class="breadcrumb-item" asp-area="Home" asp-controller="Admin" asp-action="AdminMon">Danh sách Môn học</a>
+            <span class="breadcrumb-item active">Thông tin Môn học</span>
+        </nav>
+    </div>
+</div>
+<div class="card">
+    <div class="card-body">
+        <h4 class="card-title">Thông tin Môn học: @Model.Tenmon</h4>
+        <div class="table-responsive">
+            <table class="product-info-table m-t-20">
+                <tbody>
+                    <tr>
+                        <td>Mã Môn học:</td>
+                        <td class="text-dark font-weight-semibold">@Model.Idmon</td>
+                    </tr>
+                    <tr>
+                        <td>Tên Môn học:</td>
+                        <td>@Model.Tenmon</td>
+                    </tr>
+                    <tr>
+                        <td>Ngành:</td>
+                        <td class="text-dark font-weight-semibold">@Model.ManganhNavigation.Tennganh</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
